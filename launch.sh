@@ -129,7 +129,7 @@ install () {
   fi
   cd PhoenixMachina
   printf "${CG} Install packages for PhoenixMachina${NC}\n"
-  #julia install.jl
+  julia install.jl
   cd ..
   sudo chown $user *
   sudo chown $user */
