@@ -26,7 +26,7 @@ help () {
   printf "${CLA}clear: ${CL}Clean the terminal\n"
   printf "${CLA}help: ${CL}List of available commands\n"
   printf "${CLA}install: ${CL}Install PhoenixMachina repositories\n"
-  printf "${CLA}update: ${CL}Update julia, his packages and all git repositories\n"
+  printf "${CLA}update: ${CL}Update julia, its packages and all git repositories\n"
   printf "${CLA}test: ${CL}Run test file\n"
   printf "${CLA}start: ${CL}Start PhoenixMachina\n"
   printf "${CLA}quit: ${CL}Close the terminal${NC}\n"
@@ -45,7 +45,7 @@ update () {
     git pull
     cd ..
   else
-    printf "${CR}PhoenixMachina doesn't found ${NC}\n"
+    printf "${CR}PhoenixMachina wasn't found ${NC}\n"
   fi
   if [[ -d "SapphireORM/" ]]; then
     cd SapphireORM
@@ -53,7 +53,7 @@ update () {
     git pull
     cd ..
   else
-    printf "${CR}SapphireORM doesn't found ${NC}\n"
+    printf "${CR}SapphireORM wasn't found ${NC}\n"
   fi
   if [[ -d "Tlaloc/" ]]; then
     cd Tlaloc
@@ -61,7 +61,7 @@ update () {
     git pull
     cd ..
   else
-    printf "${CR}Tlaloc doesn't found ${NC}\n"
+    printf "${CR}Tlaloc wasn't found ${NC}\n"
   fi
   if [[ -d "Yodel/" ]]; then
     cd Yodel
@@ -69,7 +69,7 @@ update () {
     git pull
     cd ..
   else
-    printf "${CR}Yodel doesn't found ${NC}\n"
+    printf "${CR}Yodel wasn't found ${NC}\n"
   fi
   if [[ -d "ConfParser/" ]]; then
     cd ConfParser
@@ -77,7 +77,7 @@ update () {
     git pull
     cd ..
   else
-    printf "${CR}ConfParser doesn't found ${NC}\n"
+    printf "${CR}ConfParser wasn't found ${NC}\n"
   fi
 }
 
@@ -90,12 +90,12 @@ start () {
     julia start_server.jl
     cd ..
   else
-    printf "${CR}PhoenixMachina doesn't found${NC}\n"
+    printf "${CR}PhoenixMachina wasn't found${NC}\n"
   fi
 }
 
 # install
-# Install PhoenixMachina and his git repositories (included packages)
+# Install PhoenixMachina and its git repositories (included packages)
 install () {
   if [[ ! -d "PhoenixMachina" ]]; then
     printf "${CG} Clone PhoenixMachina repository${NC}\n"
@@ -110,19 +110,19 @@ install () {
     printf "${CL}Tlaloc already exists${NC}\n"
   fi
   if [[ ! -d "ConfParser" ]]; then
-    printf "${CG} Clone ConfParser repository${NC}\n"
+    printf "${CG} Cloning ConfParser repository${NC}\n"
     git clone https://github.com/PhoenixMachina/ConfParser.jl.git ConfParser
   else
     printf "${CL}ConfParser already exists${NC}\n"
   fi
   if [[ ! -d "Yodel" ]]; then
-    printf "${CG} Clone Yodel repository${NC}\n"
+    printf "${CG} Cloning Yodel repository${NC}\n"
     git clone https://github.com/PhoenixMachina/Yodel.git Yodel
   else
     printf "${CL}Yodel already exists${NC}\n"
   fi
   if [[ ! -d "SapphireORM" ]]; then
-    printf "${CG} Clone SapphireORM repository${NC}\n"
+    printf "${CG} Cloning SapphireORM repository${NC}\n"
     git clone https://github.com/PhoenixMachina/SapphireORM.git SapphireORM
   else
     printf "${CL}SapphireORM already exists${NC}\n"
