@@ -9,7 +9,6 @@ dbname=""
 dbhost=""
 
 #don't touch
-path="../"
 CL='\033[1;32m'
 CR='\033[0;31m'
 CLA='\033[1;33m'
@@ -141,8 +140,8 @@ install () {
   sudo chown $user */*/
   sudo chown $user */*/*
   printf "${CG} Configuring config.jl${NC}\n"
-  if [[ -f "$path/PhoenixMachina/config.jl" ]]; then
-    rm $path/PhoenixMachina/config.jl
+  if [[ -f "PhoenixMachina/config.jl" ]]; then
+    rm PhoenixMachina/config.jl
   fi
   echo "#REQUIRED
 
@@ -155,11 +154,11 @@ DB_PASSWORD = \"$dbpassword\"
 DB_NAME = \"$dbname\"
 DB_HOST = \"$dbhost\"
 
-#OPTIONAL" >> $path/PhoenixMachina/config.jl
+#OPTIONAL" >> PhoenixMachina/config.jl
 
   printf "${CG} Configuring tlaloc.ini${NC}\n"
-  if [[ -f "$path/PhoenixMachina/include/tlaloc.ini" ]]; then
-    rm $path/PhoenixMachina/include/tlaloc.ini
+  if [[ -f "PhoenixMachina/include/tlaloc.ini" ]]; then
+    rm PhoenixMachina/include/tlaloc.ini
   fi
   echo "viewPath=$path/PhoenixMachina/views/
 templatePath=$path/PhoenixMachina/templates/
@@ -189,13 +188,14 @@ intro () {
 
 #Startup
 intro
-cd $path
+cd ..
 
 while [ true ]
 do
 
   # Input
-  printf "[$USER:$(pwd)] "
+  path=$(pwd)
+  printf "[$USER:$path] "
   read cmd
 
   # Check if cmd is a valid command, if yes, execute it.
