@@ -38,7 +38,7 @@ update () {
   printf "${CG} Check update for julia package ${NC}\n"
   sudo apt-get install julia
   printf "${CG} Updating julia packages ${NC}\n"
-  #julia -e "Pkg.update()"
+  julia -e "Pkg.update()"
   if [[ -d "PhoenixMachina/" ]]; then
     cd PhoenixMachina
     printf "${CG} Pull PhoenixMachina repository from Github to local ${NC}\n"
@@ -79,6 +79,10 @@ update () {
   else
     printf "${CR}ConfParser wasn't found ${NC}\n"
   fi
+  cd launcher-linux
+  printf "${CG} Pull launcher-linux repository${NC}\n"
+  git pull
+  cd ..
 }
 
 # start
