@@ -88,10 +88,10 @@ update () {
 # Start PhoenixMachina
 start () {
   if [[ -d "PhoenixMachina/" ]]; then
-    cd PhoenixMachina
+    cd launcher-linux/logs
     printf "${CG} Starting PhoenixMachina ${NC}\n"
-    julia start_server.jl
-    cd ..
+    julia ../../PhoenixMachina/start_server.jl 2>&1 | tee logs$(date +"%F%T")
+    cd ../..
   else
     printf "${CR}PhoenixMachina wasn't found${NC}\n"
   fi
@@ -167,7 +167,7 @@ resourcePath=$path/PhoenixMachina/resources/" >> $path/PhoenixMachina/include/tl
 
 # test
 # Run test file
-test () {
+testc () {
   folder=${cmd:4}
   julia $folder/test/runtests.jl
 }
@@ -223,7 +223,7 @@ do
     *)
     if [[ ${cmd:0:4} = "test" ]]
       then
-        test
+        testc
       else
         default
       fi
