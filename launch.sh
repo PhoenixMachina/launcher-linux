@@ -98,13 +98,13 @@ start () {
 # Install PhoenixMachina and its git repositories (included packages)
 install () {
   if [[ ! -d "PhoenixMachina" ]]; then
-    printf "${CG} Clone PhoenixMachina repository${NC}\n"
+    printf "${CG} Cloning PhoenixMachina repository${NC}\n"
     git clone https://github.com/PhoenixMachina/PhoenixMachina.git PhoenixMachina
   else
     printf "${CL}PhoenixMachina already exists${NC}\n"
   fi
   if [[ ! -d "Tlaloc" ]]; then
-    printf "${CG} Clone Tlaloc repository${NC}\n"
+    printf "${CG} Cloning Tlaloc repository${NC}\n"
     git clone https://github.com/PhoenixMachina/Tlaloc.git Tlaloc
   else
     printf "${CL}Tlaloc already exists${NC}\n"
