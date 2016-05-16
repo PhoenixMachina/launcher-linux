@@ -18,13 +18,21 @@ sudo ksh launch.sh
 ```
 Your folder must be like this:
 
+
 Folder/
-+-- ConfParser
-+-- launcher-linux
-+-- PhoenixMachina
-+-- SapphireORM
-+-- Tlaloc
-+-- Yodel
+
+├── ConfParser
+
+├── launcher-linux
+
+├── PhoenixMachina
+
+├── SapphireORM
+
+├── Tlaloc
+
+└── Yodel
+
 
 You're done!
 
