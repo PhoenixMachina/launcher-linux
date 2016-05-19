@@ -24,81 +24,15 @@ help () {
   printf "Available commands:\n"
   printf "${CLA}clear: ${CL}Clean the terminal\n"
   printf "${CLA}help: ${CL}List of available commands\n"
-  printf "${CLA}install: ${CL}Install PhoenixMachina repositories\n"
-  printf "${CLA}update: ${CL}Update julia, its packages and all git repositories\n"
-  printf "${CLA}test: ${CL}Run test file\n"
+  printf "${CLA}install: ${CL}Install and set up the PhoenixMachina repositories\n"
+  printf "${CLA}update: ${CL}Check update of Julia and PhoenixMachina repositories\n"
   printf "${CLA}start: ${CL}Start PhoenixMachina\n"
+  printf "${CLA}test: ${CL}Run test file of the repository\n"
   printf "${CLA}quit: ${CL}Close the terminal${NC}\n"
 }
 
-# update
-# Update julia, julia's packages and all PhoenixMachina git repositories
-update () {
-  printf "${CG} Check update for julia package ${NC}\n"
-  sudo apt-get install julia
-  printf "${CG} Updating julia packages ${NC}\n"
-  julia -e "Pkg.update()"
-  if [[ -d "PhoenixMachina/" ]]; then
-    cd PhoenixMachina
-    printf "${CG} Pull PhoenixMachina repository from Github to local ${NC}\n"
-    git pull
-    cd ..
-  else
-    printf "${CR}PhoenixMachina wasn't found ${NC}\n"
-  fi
-  if [[ -d "SapphireORM/" ]]; then
-    cd SapphireORM
-    printf "${CG} Pull SapphireORM repository ${NC}\n"
-    git pull
-    cd ..
-  else
-    printf "${CR}SapphireORM wasn't found ${NC}\n"
-  fi
-  if [[ -d "Tlaloc/" ]]; then
-    cd Tlaloc
-    printf "${CG} Pull Tlaloc repository ${NC}\n"
-    git pull
-    cd ..
-  else
-    printf "${CR}Tlaloc wasn't found ${NC}\n"
-  fi
-  if [[ -d "Yodel/" ]]; then
-    cd Yodel
-    printf "${CG} Pull Yodel repository${NC}\n"
-    git pull
-    cd ..
-  else
-    printf "${CR}Yodel wasn't found ${NC}\n"
-  fi
-  if [[ -d "ConfParser/" ]]; then
-    cd ConfParser
-    printf "${CG} Pull ConfParser repository${NC}\n"
-    git pull
-    cd ..
-  else
-    printf "${CR}ConfParser wasn't found ${NC}\n"
-  fi
-  cd launcher-linux
-  printf "${CG} Pull launcher-linux repository${NC}\n"
-  git pull
-  cd ..
-}
-
-# start
-# Start PhoenixMachina
-start () {
-  if [[ -d "PhoenixMachina/" ]]; then
-    cd launcher-linux/logs
-    printf "${CG} Starting PhoenixMachina ${NC}\n"
-    julia ../../PhoenixMachina/start_server.jl 2>&1 | tee logs$(date +"%F%T")
-    cd ../..
-  else
-    printf "${CR}PhoenixMachina wasn't found${NC}\n"
-  fi
-}
-
 # install
-# Install PhoenixMachina and its git repositories (included packages)
+# Install and set up the PhoenixMachina repositories
 install () {
   if [[ ! -d "PhoenixMachina" ]]; then
     printf "${CG} Cloning PhoenixMachina repository${NC}\n"
@@ -165,8 +99,75 @@ templatePath=$path/PhoenixMachina/templates/
 resourcePath=$path/PhoenixMachina/resources/" >> $path/PhoenixMachina/include/tlaloc.ini
 }
 
+
+# update
+# Check update of Julia and PhoenixMachina repositories
+update () {
+  printf "${CG} Check update for julia package ${NC}\n"
+  sudo apt-get install julia
+  printf "${CG} Updating julia packages ${NC}\n"
+  julia -e "Pkg.update()"
+  if [[ -d "PhoenixMachina/" ]]; then
+    cd PhoenixMachina
+    printf "${CG} Pull PhoenixMachina repository from Github to local ${NC}\n"
+    git pull
+    cd ..
+  else
+    printf "${CR}PhoenixMachina wasn't found ${NC}\n"
+  fi
+  if [[ -d "SapphireORM/" ]]; then
+    cd SapphireORM
+    printf "${CG} Pull SapphireORM repository ${NC}\n"
+    git pull
+    cd ..
+  else
+    printf "${CR}SapphireORM wasn't found ${NC}\n"
+  fi
+  if [[ -d "Tlaloc/" ]]; then
+    cd Tlaloc
+    printf "${CG} Pull Tlaloc repository ${NC}\n"
+    git pull
+    cd ..
+  else
+    printf "${CR}Tlaloc wasn't found ${NC}\n"
+  fi
+  if [[ -d "Yodel/" ]]; then
+    cd Yodel
+    printf "${CG} Pull Yodel repository${NC}\n"
+    git pull
+    cd ..
+  else
+    printf "${CR}Yodel wasn't found ${NC}\n"
+  fi
+  if [[ -d "ConfParser/" ]]; then
+    cd ConfParser
+    printf "${CG} Pull ConfParser repository${NC}\n"
+    git pull
+    cd ..
+  else
+    printf "${CR}ConfParser wasn't found ${NC}\n"
+  fi
+  cd launcher-linux
+  printf "${CG} Pull launcher-linux repository${NC}\n"
+  git pull
+  cd ..
+}
+
+# start
+# Start PhoenixMachina
+start () {
+  if [[ -d "PhoenixMachina/" ]]; then
+    cd launcher-linux/logs
+    printf "${CG} Starting PhoenixMachina ${NC}\n"
+    julia ../../PhoenixMachina/start_server.jl 2>&1 | tee logs$(date +"%F%T")
+    cd ../..
+  else
+    printf "${CR}PhoenixMachina wasn't found${NC}\n"
+  fi
+}
+
 # test
-# Run test file
+# Run test file of the repository
 testc () {
   folder=${cmd:4}
   julia $folder/test/runtests.jl
