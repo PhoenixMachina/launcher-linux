@@ -16,7 +16,7 @@ Now make sure you're in the right folder and run
 ```
 sudo ksh launch.sh
 ```
-Your folder must be like this:
+Your folder must be structured like this:
 
 
 Folder/
@@ -42,7 +42,7 @@ To config the launcher, set the variables below in launch.sh.
 ```
 user="username"
 ```
-Change "username" to your linux username
+Change "username" to your linux username in first part.
 
 ```
 dbuser="localhost"
@@ -50,7 +50,7 @@ dbpassword=""
 dbname="phoenixmachina"
 dbhost="localhost"
 ```
-Add your database configuration. The code above is an example.
+Then, add your database configuration. The code above is an example.
 
 ## Features
 ### Commands
