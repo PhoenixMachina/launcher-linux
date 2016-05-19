@@ -16,7 +16,7 @@ Now make sure you're in the right folder and run
 ```
 sudo ksh launch.sh
 ```
-Your folder must be structured like this:
+Your folder must be like this:
 
 
 Folder/
@@ -42,7 +42,7 @@ To config the launcher, set the variables below in launch.sh.
 ```
 user="username"
 ```
-Change "username" to your linux username in first part
+Change "username" to your linux username
 
 ```
 dbuser="localhost"
@@ -50,4 +50,33 @@ dbpassword=""
 dbname="phoenixmachina"
 dbhost="localhost"
 ```
-Then, add your database configuration. The code above is an example.
+Add your database configuration. The code above is an example.
+
+## Features
+### Commands
+
+#### clear
+Clean the terminal.
+
+#### help
+Display the list of available commands.
+
+#### install
+Install and set up the PhoenixMachina repositories.
+
+#### update
+Check update of Julia and PhoenixMachina repositories.
+
+#### start
+Start PhoenixMachina.
+
+#### test <repository>
+Run the test file of the repository.
+
+#### quit
+Close the terminal.
+
+---
+
+### Logs
+When you start PhoenixMachina, logs are created in logs/.
