@@ -1,12 +1,12 @@
 #!/bin/bash
 clear
-user="ulysse"
+user=""
 
 #Database config
-dbuser="root"
-dbpassword="localhost"
-dbname="phoenixmachina"
-dbhost="localhost"
+dbuser=""
+dbpassword=""
+dbname=""
+dbhost=""
 
 #don't touch
 CL='\033[1;32m'
