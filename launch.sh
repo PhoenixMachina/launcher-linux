@@ -97,8 +97,15 @@ DB_HOST = \"$dbhost\"
   echo "viewPath=$path/PhoenixMachina/views/
 templatePath=$path/PhoenixMachina/templates/
 resourcePath=$path/PhoenixMachina/resources/" >> $path/PhoenixMachina/include/tlaloc.ini
-}
 
+  printf "${CG} Configuring test_conf.ini in Tlaloc${NC}\n"
+  if [[ -f "Tlaloc/test/test_conf.ini" ]]; then
+    rm Tlaloc/test/test_conf.ini
+  fi
+echo "viewPath=thisIsTheViewPath
+templatePath=thisIsTheTemplatePath
+resourcePath=$path/Tlaloc/test/thisIsTheResource/" >> $path/Tlaloc/test/test_conf.ini
+}
 
 # update
 # Check update of Julia and PhoenixMachina repositories
