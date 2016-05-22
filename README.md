@@ -1,4 +1,7 @@
 # launcher-linux
+
+[![Licence MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 This launcher was designed to help you install and update all projects from PhoenixMachina.
 
 ## Install
