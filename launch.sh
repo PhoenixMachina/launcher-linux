@@ -1,12 +1,12 @@
 #!/bin/bash
 clear
-user=""
+user="ulysse"
 
 #Database config
-dbuser=""
-dbpassword=""
-dbname=""
-dbhost=""
+dbuser="root"
+dbpassword="localhost"
+dbname="phoenixmachina"
+dbhost="localhost"
 
 #don't touch
 CL='\033[1;32m'
@@ -64,6 +64,12 @@ install () {
   else
     printf "${CL}SapphireORM already exists${NC}\n"
   fi
+  if [[ ! -d "launcher-linux" ]]; then
+    printf "${CG} Cloning launcher-linux repository${NC}\n"
+    git clone https://github.com/PhoenixMachina/launcher-linux.git launcher-linux
+  else
+    printf "${CL}launcher-linux already exists${NC}\n"
+  fi
   cd PhoenixMachina
   printf "${CG} Install packages for PhoenixMachina${NC}\n"
   julia install.jl
@@ -104,7 +110,7 @@ resourcePath=$path/PhoenixMachina/resources/" >> $path/PhoenixMachina/include/tl
   fi
 echo "viewPath=thisIsTheViewPath
 templatePath=thisIsTheTemplatePath
-resourcePath=$path/Tlaloc/test/thisIsTheResource/" >> $path/Tlaloc/test/test_conf.ini
+resourcePath=$path/Tlaloc/test/thisIsTheResource" >> $path/Tlaloc/test/test_conf.ini
 }
 
 # update
