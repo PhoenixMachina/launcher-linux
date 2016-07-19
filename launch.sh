@@ -1,12 +1,12 @@
 #!/bin/bash
 clear
 user=""
+path="/path/to/parent/directory"
 
 #Database config
+dbdsn=""
 dbuser=""
 dbpassword=""
-dbname=""
-dbhost=""
 
 #don't touch
 CL='\033[1;32m'
@@ -74,11 +74,11 @@ install () {
   printf "${CG} Install packages for PhoenixMachina${NC}\n"
   julia install.jl
   cd ..
-  sudo chown $user *
-  sudo chown $user */
-  sudo chown $user */*
-  sudo chown $user */*/
-  sudo chown $user */*/*
+  sudo chown -R $user *
+  sudo chown -R $user */
+  sudo chown -R $user */*
+  sudo chown -R $user */*/
+  sudo chown -R $user */*/*
   printf "${CG} Configuring config.jl${NC}\n"
   if [[ -f "PhoenixMachina/config.jl" ]]; then
     rm PhoenixMachina/config.jl
@@ -88,13 +88,13 @@ install () {
 #Home URLS
 HOME_CONTROLLER = \"homeController.jl\"
 HOME_URL = \"$path/PhoenixMachina/\"
-# Database
+
+DB_DSN = \"$dbdsn\"
 DB_USER = \"$dbuser\"
 DB_PASSWORD = \"$dbpassword\"
-DB_NAME = \"$dbname\"
-DB_HOST = \"$dbhost\"
 
-#OPTIONAL" >> PhoenixMachina/config.jl
+#OPTIONAL
+Logging.configure(output=open(\"$path/PhoenixMachina/logfile.log\", \"a\"))" >> PhoenixMachina/config.jl
 
   printf "${CG} Configuring tlaloc.ini${NC}\n"
   if [[ -f "PhoenixMachina/include/tlaloc.ini" ]]; then
@@ -202,13 +202,12 @@ intro () {
 
 #Startup
 intro
-cd ..
+cd $path
 
 while [ true ]
 do
 
   # Input
-  path=$(pwd)
   printf "[$USER:$path] "
   read cmd
 
