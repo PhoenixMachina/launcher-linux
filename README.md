@@ -48,8 +48,7 @@ user="username"
 Change "username" to your linux username in first part.
 
 ```
-dbuser="localhost"
-dbpassword=""
+dbdsn="phoenixmachina-connector"
 dbname="phoenixmachina"
 dbhost="localhost"
 ```
